@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS</title>
+  <script src="https://opensource.keycdn.com/angularjs/1.5.0/angular.min.js"></script>
+  <script>
+    angular.module('myapp', [])
+    .controller('fooCtrl', function($scope){
+    	$scope.foo = {
+            bar: 222
+        }
+    })
+  </script>
+</head>
+<body ng-app="myapp">
+<div ng-controller="fooCtrl" class="container" style="margin: 15px;">
+  <h1>Binding e ng-model</h1>
+
+    <h2>1. Texto</h2>
+    <div>
+        Digita aí: <input type="text" ng-model="foo.bar"><br>
+        De novo: <input type="text" ng-model="foo.bar">
+        <div class="well">
+            {{ foo }}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+

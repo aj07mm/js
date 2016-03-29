@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS</title>
+  <script src="https://opensource.keycdn.com/angularjs/1.5.0/angular.min.js"></script>
+  <script>
+    angular.module('myapp', [])
+    .controller('fooCtrl', function($scope, fooService, fooFactory){
+    	$scope.showXis = fooFactory.showXis;
+    	$scope.getName = fooService.showName;
+    	$scope.show = function(){
+    		console.log($scope.meutexto)
+    	}
+    })
+    .service('fooService', function(){
+    	this.name = 'fooooooteu!';
+    	this.showName = function(){
+    		console.log('showName')
+    		console.log(this) //b
+    		console.log(this.name) //undefined
+    	}
+    })
+    .factory('fooFactory', function(){
+    	var _xis = 777;
+    	return {
+    			xis : 123,
+    			showXis : function(){
+					console.log(this) //b
+					console.log(this.xis); //undefined
+					console.log(_xis); //777
+				}
+    		};
+    });
+  </script>
+</head>
+<body ng-app="myapp">
+<div ng-controller="fooCtrl" class="container" style="margin: 15px;">
+  <h1>Binding e ng-model</h1>
+
+    <h2>1. Texto</h2>
+    <div>
+        Digita aí: <input type="text" ng-model="meutexto"><br>
+        De novo: <input type="text" ng-model="meutexto">
+        <div class="well">
+            Olha aí, {{'você digitou: ' + meutexto}}
+        </div>
+        <button ng-click="show();">clica</button>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+

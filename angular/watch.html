@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS</title>
+  <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.5.0/angular.min.js"></script>
+  <script>
+    var myapp = angular.module('myapp', []);
+    myapp.controller('MainCtrl', function($scope) {
+    $scope.name = "Angular";
+  
+    $scope.updated = -1;
+    // console.log($scope.$digest())
+    $scope.$watch('name', function(evt) {
+      console.log(evt)
+      $scope.updated++;
+    });
+  });
+  myapp.controller('SecCtrl', ['$scope', function($scope){
+    $scope.foo = 123;
+  }])
+
+  </script>
+</head>
+
+<body ng-app="myapp">
+  <!-- <div ng-controller="MainCtrl">
+    <label>Name:</label>
+    <input type="text" ng-value="name"></input>
+    <label>Updated:</label>
+    <span>{{ updated }}</span>
+  </div> -->
+  <div ng-controller="MainCtrl">
+    <input ng-model="name" />
+    Name updated: {{updated}} times.
+  </div>
+
+
+</body>
+
+</html>
