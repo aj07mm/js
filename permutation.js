@@ -41,9 +41,30 @@ function permutation(arr){
 	return arr
 }
 
+function combination(arr, size){
+	if(arr.length < size){
+		return false;
+	}
+	var res = [],
+		arrDefault;
+		//set once
+		if(arr != arrDefault){
+			arrDefault = arr;
+		}
+
+	for (var i = size - 2; i >= 0; i--) {
+		arr = matrix2(arr, arrDefault)
+	};
+
+	return arr
+}
+
 arrA = ['a']
 arrB = ['a', 'b', 'c']
 arrC = ['a', 'b', 'c', 'd']
 arrD = ['a', 'b', 'c', 'd', 'e']
+arrE = ['a', 'b', 'c', 'd', 'e', 'f']
+arrF = ['a', 'b', 'c', 'd', 'e', 'f', 'g']//7
 
-console.log(permutation(arrA))
+// console.log(permutation(arrA))
+console.log(combination(arrF, 7))
